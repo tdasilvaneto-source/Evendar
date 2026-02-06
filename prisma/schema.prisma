@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Segment {
+  MICE_CONFERENCE
+  TRADE_FAIR
+  CONCERT
+  SPORT
+  FESTIVAL
+  POLITICAL_EU
+  CORPORATE
+  CULTURAL
+  OTHER
+}
+
+enum Recurrence {
+  ONE_OFF
+  ANNUAL
+  MONTHLY
+  WEEKLY
+  UNKNOWN
+}
+
+enum Impact {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model Event {
+  id                  String     @id @default(cuid())
+  date                DateTime
+  endDate             DateTime
+  segment             Segment
+  expectedPeople      Int?
+  expectedPeopleKnown Boolean    @default(false)
+  event               String
+  location            String
+  website             String
+  contact             String     @default("")
+  phone               String     @default("")
+  email               String     @default("")
+  recurrence          Recurrence @default(UNKNOWN)
+  impact              Impact     @default(LOW)
+  shortlist           Boolean    @default(false)
+  source              String
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+
+  @@index([date])
+  @@index([segment])
+  @@unique([event, date, endDate, location])
+}
