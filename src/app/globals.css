@@ -1,0 +1,9 @@
+:root { font-family: Arial, sans-serif; }
+body { margin: 0; background: #f5f6f8; color: #1c1d22; }
+a { color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid #e6e7eb; padding: 8px; font-size: 14px; text-align: left; }
+input, select, button { padding: 8px; margin-right: 8px; }
+nav { display: flex; gap: 8px; margin-bottom: 12px; }
